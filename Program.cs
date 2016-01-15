@@ -78,14 +78,14 @@ namespace main
                 new Customer("Albus", "Dumbledore", "London")
             };
 
-            IEnumerable<Customer> customerQuery =
+            IEnumerable<string> customerLastNameQuery =
                 from customer in customers
                 where customer.City == "London"
-                select customer;
+                select customer.LastName;
 
-            foreach (Customer customer in customerQuery)
+            foreach (string LastName in customerLastNameQuery)
             {
-                Console.WriteLine(customer.LastName + ", " + customer.FirstName);
+                Console.WriteLine(LastName + " lives in London");
             }
         }
     }
