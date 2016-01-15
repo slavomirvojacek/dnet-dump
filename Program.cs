@@ -75,13 +75,15 @@ namespace main
             Customer[] customers = new Customer[] {
                 new Customer("John", "Doe", "New York"),
                 new Customer("Jason", "Statham", "London"),
+                new Customer("Bob", "Statham", "London"),
                 new Customer("Albus", "Dumbledore", "London")
             };
 
-            IEnumerable<string> customerLastNameQuery =
-                from customer in customers
-                where customer.City == "London"
-                select customer.LastName;
+            List<string> customerLastNameQuery = customers
+                .Where(_ => _.City == "London")
+                .Select(_ => _.LastName)
+                .Distinct()
+                .ToList();
 
             foreach (string LastName in customerLastNameQuery)
             {
