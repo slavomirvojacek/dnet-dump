@@ -20,3 +20,5 @@
     yo aspnet --gulp
     # will create a new folder
     # and then follow the instructions
+    
+When you modify the packages list in `project.json` you should run `dnu restore` to get the latest ones. Enjoy!
