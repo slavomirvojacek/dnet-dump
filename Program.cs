@@ -29,7 +29,7 @@ namespace main
 
             // List is a subset of IEnumerable
             List<string> customerLastNameQuery = customers
-                .Where(_ => _.City == "London")
+                .Where(_ => _.City.Equals("London", StringComparison.InvariantCultureIgnoreCase))
                 .Select(_ => _.LastName)
                 .Distinct()
                 .ToList();
