@@ -17,6 +17,28 @@ namespace main
             this.LastName = lastname;
             this.City = city;
         }
+        
+        public static void SelectCustomerData()
+        {
+            Customer[] customers = new Customer[] {
+                new Customer("John", "Doe", "New York"),
+                new Customer("Jason", "Statham", "London"),
+                new Customer("Bob", "Statham", "London"),
+                new Customer("Albus", "Dumbledore", "London")
+            };
+
+            // List is a subset of IEnumerable
+            List<string> customerLastNameQuery = customers
+                .Where(_ => _.City == "London")
+                .Select(_ => _.LastName)
+                .Distinct()
+                .ToList();
+
+            foreach (string LastName in customerLastNameQuery)
+            {
+                Console.WriteLine(LastName + " lives in London");
+            }
+        }
     }
 
     public class Program
@@ -38,7 +60,7 @@ namespace main
 
             Console.WriteLine("\n");
 
-            SelectCustomerData();
+            Customer.SelectCustomerData();
 
             // Console.Read();
         }
@@ -68,27 +90,6 @@ namespace main
             {
                 Console.Write("{0,1} ", num);
             }
-        }
-
-        private static void SelectCustomerData()
-        {
-            Customer[] customers = new Customer[] {
-                new Customer("John", "Doe", "New York"),
-                new Customer("Jason", "Statham", "London"),
-                new Customer("Bob", "Statham", "London"),
-                new Customer("Albus", "Dumbledore", "London")
-            };
-
-            List<string> customerLastNameQuery = customers
-                .Where(_ => _.City == "London")
-                .Select(_ => _.LastName)
-                .Distinct()
-                .ToList();
-
-            foreach (string LastName in customerLastNameQuery)
-            {
-                Console.WriteLine(LastName + " lives in London");
-            }
-        }
+        }   
     }
 }
